@@ -1,0 +1,52 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-media": {
+      "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-streaming-media": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
+    }
+  },
+  "dependent_plugins": {}
+}
