@@ -309,6 +309,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "call"
       ]
+    },
+    {
+      "id": "cordova-plugin-firebase.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebase/www/firebase.js",
+      "pluginId": "cordova-plugin-firebase",
+      "clobbers": [
+        "FirebasePlugin"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -324,6 +332,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-streaming-media": "2.3.0",
     "cordova-plugin-whitelist": "1.3.3",
-    "mx.ferreyra.callnumber": "0.0.2"
+    "mx.ferreyra.callnumber": "0.0.2",
+    "cordova-plugin-firebase": "2.0.5"
   };
 });

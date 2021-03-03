@@ -129,10 +129,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 /*
-* WhatsApp in Ionic 5 application  (https://github.com/habupagas/ionic-5-WhatsApp)
-* Copyright  @2020-present. All right reserved.
-* Author: Abubakar Pagas
-*/
+ * WhatsApp in Ionic 5 application  (https://github.com/habupagas/ionic-5-WhatsApp)
+ * Copyright  @2020-present. All right reserved.
+ * Author: Abubakar Pagas
+ */
 
 
 
@@ -164,14 +164,8 @@ let LoginPage = class LoginPage {
         this.otpSent = false;
         this.countryCode = this.countryCodeService.getCountryCode();
         this.phone = this.formBuilder.group({
-            inputNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([
-                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(6),
-                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required,
-            ])),
-            code: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([
-                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(1),
-                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required,
-            ])),
+            inputNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]("", _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required])),
+            code: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]("", _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required])),
         });
     }
     // seletedCode(item){
@@ -179,14 +173,14 @@ let LoginPage = class LoginPage {
     //   console.log("country code", item)
     // }
     ngOnInit() {
-        this.recaptchaVerifier = new firebase__WEBPACK_IMPORTED_MODULE_8__["auth"].RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' });
+        this.recaptchaVerifier = new firebase__WEBPACK_IMPORTED_MODULE_8__["auth"].RecaptchaVerifier("recaptcha-container", { size: "invisible" });
         this.option = this.values;
     }
     ionViewDidEnter() {
-        this.af.authState.subscribe(user => {
+        this.af.authState.subscribe((user) => {
             if (user) {
                 this.subscription = this.platform.backButton.subscribe(() => {
-                    navigator['app'].exitApp();
+                    navigator["app"].exitApp();
                 });
             }
         });
@@ -195,28 +189,38 @@ let LoginPage = class LoginPage {
     next() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.loading.show();
-            this.af.signInWithPhoneNumber(this.countryCodes + this.phoneNumber, this.recaptchaVerifier).then((result) => {
+            console.log("this.countryCodes ===>", this.countryCodes);
+            console.log("this.phoneNumber ===>", this.phoneNumber);
+            console.log("this.recaptchaVerifier ===>", this.recaptchaVerifier);
+            this.af
+                .signInWithPhoneNumber(this.countryCodes + this.phoneNumber, this.recaptchaVerifier)
+                .then((result) => {
+                console.log("signInWithPhoneNumber ====>", result);
                 // this.phoneNumber = phone
                 this.loading.hidePro();
                 this.comfirmationResult = result;
                 this.otpSent = true;
-                this.optSentToast('Your OTP have been sent.');
-            }).catch((error) => {
+                this.optSentToast("Your OTP have been sent.");
+            })
+                .catch((error) => {
                 let code = error["code"];
                 this.loading.hidePro();
                 this.alertService.showErrorMessage(code);
-                // console.log("err", error)
+                console.log("err", error);
             });
         });
     }
     // init the comfrim the code verification code
     initia() {
         this.loading.show();
-        this.comfirmationResult.confirm(this.otp).then(() => {
+        this.comfirmationResult
+            .confirm(this.otp)
+            .then(() => {
             // this.optSentToast('Verification have been verify')
             this.loginService.loginPhoneNumber(this.phoneNumber);
-        }).catch((error) => {
-            let code = error['code'];
+        })
+            .catch((error) => {
+            let code = error["code"];
             this.loading.hide();
             this.alertService.showErrorMessage(code);
         });
@@ -229,25 +233,26 @@ let LoginPage = class LoginPage {
     presentAlertConfirm() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const alert = yield this.alert.create({
-                message: 'We will be verifying the phone' +
-                    '<br>' +
+                message: "We will be verifying the phone" +
+                    "<br>" +
                     `<strong> ${this.phoneNumber} </strong>` +
-                    '<br>' +
-                    '<br>' +
-                    'is this OK, or would you like to edit this number?',
+                    "<br>" +
+                    "<br>" +
+                    "is this OK, or would you like to edit this number?",
                 buttons: [
                     {
-                        text: 'EDIT',
-                        role: 'cancel',
-                        cssClass: 'secondary',
-                        handler: () => { }
-                    }, {
-                        text: 'Ok',
+                        text: "EDIT",
+                        role: "cancel",
+                        cssClass: "secondary",
+                        handler: () => { },
+                    },
+                    {
+                        text: "Ok",
                         handler: () => {
                             this.next();
-                        }
-                    }
-                ]
+                        },
+                    },
+                ],
             });
             yield alert.present();
         });
@@ -256,34 +261,38 @@ let LoginPage = class LoginPage {
     ResendSMS() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const alert = yield this.alert.create({
-                header: 'Resent!',
-                message: '<strong>Do want to resend comfirmation code</strong>' + this.phoneNumber,
+                header: "Resent!",
+                message: "<strong>Do want to resend comfirmation code</strong>" +
+                    this.phoneNumber,
                 buttons: [
                     {
-                        text: 'Cancel',
-                        role: 'cancel',
-                        cssClass: 'secondary',
-                        handler: () => {
-                        }
-                    }, {
-                        text: 'Okay',
+                        text: "Cancel",
+                        role: "cancel",
+                        cssClass: "secondary",
+                        handler: () => { },
+                    },
+                    {
+                        text: "Okay",
                         handler: () => {
                             this.ResendCode();
-                        }
-                    }
-                ]
+                        },
+                    },
+                ],
             });
             yield alert.present();
         });
     }
     ResendCode() {
         this.loading.show();
-        this.af.signInWithPhoneNumber(this.phoneNumber, this.recaptchaVerifier).then((result) => {
+        this.af
+            .signInWithPhoneNumber(this.phoneNumber, this.recaptchaVerifier)
+            .then((result) => {
             this.comfirmationResult = result;
-            this.optSentToast('Your OTP have been sent.');
+            this.optSentToast("Your OTP have been sent.");
             this.loading.hide();
-        }).catch((error) => {
-            let code = error['code'];
+        })
+            .catch((error) => {
+            let code = error["code"];
             this.loading.hide();
             this.alertService.showErrorMessage(code);
         });
@@ -293,7 +302,7 @@ let LoginPage = class LoginPage {
             const toast = yield this.toastController.create({
                 message: option,
                 duration: 2000,
-                position: 'top'
+                position: "top",
             });
             toast.present();
         });
@@ -313,7 +322,7 @@ LoginPage.ctorParameters = () => [
 ];
 LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_6__["Component"])({
-        selector: 'app-login',
+        selector: "app-login",
         template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./login.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html")).default,
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./login.page.scss */ "./src/app/pages/login/login.page.scss")).default]
     })

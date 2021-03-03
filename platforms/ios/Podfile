@@ -5,4 +5,6 @@ platform :ios, '11.0'
 target 'MyApp' do
 	project 'MyApp.xcodeproj'
 
+pod 'Firebase/Auth'
+pod 'Firebase/Messaging'
 end

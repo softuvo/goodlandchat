@@ -269,10 +269,10 @@
       /*! @angular/forms */
       "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
       /*
-      * WhatsApp in Ionic 5 application  (https://github.com/habupagas/ionic-5-WhatsApp)
-      * Copyright  @2020-present. All right reserved.
-      * Author: Abubakar Pagas
-      */
+       * WhatsApp in Ionic 5 application  (https://github.com/habupagas/ionic-5-WhatsApp)
+       * Copyright  @2020-present. All right reserved.
+       * Author: Abubakar Pagas
+       */
       // import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 
 
@@ -296,8 +296,8 @@
           this.otpSent = false;
           this.countryCode = this.countryCodeService.getCountryCode();
           this.phone = this.formBuilder.group({
-            inputNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required])),
-            code: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required]))
+            inputNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]("", _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required])),
+            code: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]("", _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required]))
           });
         } // seletedCode(item){
         //   this.countryCodes = item.dial_code
@@ -308,8 +308,8 @@
         _createClass(LoginPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            this.recaptchaVerifier = new firebase__WEBPACK_IMPORTED_MODULE_8__["auth"].RecaptchaVerifier('recaptcha-container', {
-              'size': 'invisible'
+            this.recaptchaVerifier = new firebase__WEBPACK_IMPORTED_MODULE_8__["auth"].RecaptchaVerifier("recaptcha-container", {
+              size: "invisible"
             });
             this.option = this.values;
           }
@@ -321,7 +321,7 @@
             this.af.authState.subscribe(function (user) {
               if (user) {
                 _this.subscription = _this.platform.backButton.subscribe(function () {
-                  navigator['app'].exitApp();
+                  navigator["app"].exitApp();
                 });
               }
             });
@@ -338,24 +338,29 @@
                   switch (_context.prev = _context.next) {
                     case 0:
                       this.loading.show();
+                      console.log("this.countryCodes ===>", this.countryCodes);
+                      console.log("this.phoneNumber ===>", this.phoneNumber);
+                      console.log("this.recaptchaVerifier ===>", this.recaptchaVerifier);
                       this.af.signInWithPhoneNumber(this.countryCodes + this.phoneNumber, this.recaptchaVerifier).then(function (result) {
-                        // this.phoneNumber = phone
+                        console.log("signInWithPhoneNumber ====>", result); // this.phoneNumber = phone
+
                         _this2.loading.hidePro();
 
                         _this2.comfirmationResult = result;
                         _this2.otpSent = true;
 
-                        _this2.optSentToast('Your OTP have been sent.');
+                        _this2.optSentToast("Your OTP have been sent.");
                       })["catch"](function (error) {
                         var code = error["code"];
 
                         _this2.loading.hidePro();
 
-                        _this2.alertService.showErrorMessage(code); // console.log("err", error)
+                        _this2.alertService.showErrorMessage(code);
 
+                        console.log("err", error);
                       });
 
-                    case 2:
+                    case 5:
                     case "end":
                       return _context.stop();
                   }
@@ -374,7 +379,7 @@
               // this.optSentToast('Verification have been verify')
               _this3.loginService.loginPhoneNumber(_this3.phoneNumber);
             })["catch"](function (error) {
-              var code = error['code'];
+              var code = error["code"];
 
               _this3.loading.hide();
 
@@ -401,14 +406,14 @@
                     case 0:
                       _context2.next = 2;
                       return this.alert.create({
-                        message: 'We will be verifying the phone' + '<br>' + "<strong> ".concat(this.phoneNumber, " </strong>") + '<br>' + '<br>' + 'is this OK, or would you like to edit this number?',
+                        message: "We will be verifying the phone" + "<br>" + "<strong> ".concat(this.phoneNumber, " </strong>") + "<br>" + "<br>" + "is this OK, or would you like to edit this number?",
                         buttons: [{
-                          text: 'EDIT',
-                          role: 'cancel',
-                          cssClass: 'secondary',
+                          text: "EDIT",
+                          role: "cancel",
+                          cssClass: "secondary",
                           handler: function handler() {}
                         }, {
-                          text: 'Ok',
+                          text: "Ok",
                           handler: function handler() {
                             _this4.next();
                           }
@@ -442,15 +447,15 @@
                     case 0:
                       _context3.next = 2;
                       return this.alert.create({
-                        header: 'Resent!',
-                        message: '<strong>Do want to resend comfirmation code</strong>' + this.phoneNumber,
+                        header: "Resent!",
+                        message: "<strong>Do want to resend comfirmation code</strong>" + this.phoneNumber,
                         buttons: [{
-                          text: 'Cancel',
-                          role: 'cancel',
-                          cssClass: 'secondary',
+                          text: "Cancel",
+                          role: "cancel",
+                          cssClass: "secondary",
                           handler: function handler() {}
                         }, {
-                          text: 'Okay',
+                          text: "Okay",
                           handler: function handler() {
                             _this5.ResendCode();
                           }
@@ -479,11 +484,11 @@
             this.af.signInWithPhoneNumber(this.phoneNumber, this.recaptchaVerifier).then(function (result) {
               _this6.comfirmationResult = result;
 
-              _this6.optSentToast('Your OTP have been sent.');
+              _this6.optSentToast("Your OTP have been sent.");
 
               _this6.loading.hide();
             })["catch"](function (error) {
-              var code = error['code'];
+              var code = error["code"];
 
               _this6.loading.hide();
 
@@ -503,7 +508,7 @@
                       return this.toastController.create({
                         message: option,
                         duration: 2000,
-                        position: 'top'
+                        position: "top"
                       });
 
                     case 2:
@@ -548,7 +553,7 @@
       };
 
       LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_6__["Component"])({
-        selector: 'app-login',
+        selector: "app-login",
         template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
         /*! raw-loader!./login.page.html */
         "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html"))["default"],

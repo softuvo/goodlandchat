@@ -13,6 +13,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import * as firebase from "firebase";
 import { AlertController, ToastController, Platform } from "@ionic/angular";
+import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import {
   FormBuilder,
   FormGroup,
@@ -57,7 +58,8 @@ export class LoginPage implements OnInit {
     private alertService: AlertService,
     private platform: Platform,
     private loginService: LoginService,
-    public countryCodeService: CountryCodeService
+    public countryCodeService: CountryCodeService,
+    private firebase: FirebaseX
   ) {
     this.countryCode = this.countryCodeService.getCountryCode();
     this.phone = this.formBuilder.group({
@@ -101,25 +103,43 @@ export class LoginPage implements OnInit {
     console.log("this.countryCodes ===>", this.countryCodes);
     console.log("this.phoneNumber ===>", this.phoneNumber);
     console.log("this.recaptchaVerifier ===>", this.recaptchaVerifier);
-    this.af
-      .signInWithPhoneNumber(
-        this.countryCodes + this.phoneNumber,
-        this.recaptchaVerifier
-      )
-      .then((result) => {
-        console.log("signInWithPhoneNumber ====>", result);
-        // this.phoneNumber = phone
-        this.loading.hidePro();
-        this.comfirmationResult = result;
-        this.otpSent = true;
-        this.optSentToast("Your OTP have been sent.");
+    // if (this.platform.is("ios")) {
+    console.log("in ios part ==>");
+    this.firebase
+      .verifyPhoneNumber(this.countryCode + this.phoneNumber, 100)
+      .then((vdata) => {
+        console.log("verifyPhoneNumber in ios ==>", vdata);
+        // this.refConfirm = vdata;
+        //you can redirect the person to a verification page or show an alert to
+        // input verification code.
       })
       .catch((error) => {
-        let code = error["code"];
-        this.loading.hidePro();
-        this.alertService.showErrorMessage(code);
-        console.log("err", error);
+        // let code = error["code"];
+        // this.loading.hidePro();
+        // this.alertService.showErrorMessage(code);
+        console.log("new error", error);
       });
+    // } else {
+    //   this.af
+    //     .signInWithPhoneNumber(
+    //       this.countryCodes + this.phoneNumber,
+    //       this.recaptchaVerifier
+    //     )
+    //     .then((result) => {
+    //       console.log("signInWithPhoneNumber ====>", result);
+    //       // this.phoneNumber = phone
+    //       this.loading.hidePro();
+    //       this.comfirmationResult = result;
+    //       this.otpSent = true;
+    //       this.optSentToast("Your OTP have been sent.");
+    //     })
+    //     .catch((error) => {
+    //       let code = error["code"];
+    //       this.loading.hidePro();
+    //       this.alertService.showErrorMessage(code);
+    //       console.log("err", error);
+    //     });
+    // }
   }
 
   // init the comfrim the code verification code

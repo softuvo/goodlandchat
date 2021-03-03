@@ -4749,15 +4749,14 @@ __webpack_require__.r(__webpack_exports__);
 const environment = {
     production: true,
     firebaseConfig: {
-        apiKey: "AIzaSyDICCY9TAcNejKjqlLFP5o4bLPYJ5C2Lf0",
-        authDomain: "whatsapp-b8b90.firebaseapp.com",
-        databaseURL: "https://whatsapp-b8b90.firebaseio.com",
-        projectId: "whatsapp-b8b90",
-        storageBucket: "whatsapp-b8b90.appspot.com",
-        messagingSenderId: "661296403570",
-        appId: "1:661296403570:web:332fe0a2abd58d8acc9eeb",
-        measurementId: "G-WKZBBKH5V0"
-    }
+        apiKey: "AIzaSyB0JYYVOejregk0FC3TZgZpXXGHC6FPoSU",
+        authDomain: "goodland-chat.firebaseapp.com",
+        projectId: "goodland-chat",
+        storageBucket: "goodland-chat.appspot.com",
+        messagingSenderId: "674030220120",
+        appId: "1:674030220120:web:2bc2fbb93119d1ddf76b2d",
+        measurementId: "G-KF05T8D6FM",
+    },
 };
 
 
@@ -4778,6 +4777,15 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
+    firebaseConfig: {
+        apiKey: "AIzaSyB0JYYVOejregk0FC3TZgZpXXGHC6FPoSU",
+        authDomain: "goodland-chat.firebaseapp.com",
+        projectId: "goodland-chat",
+        storageBucket: "goodland-chat.appspot.com",
+        messagingSenderId: "674030220120",
+        appId: "1:674030220120:web:2bc2fbb93119d1ddf76b2d",
+        measurementId: "G-KF05T8D6FM",
+    },
 };
 /*
  * For easier debugging in development mode, you can import the following file

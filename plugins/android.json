@@ -47,6 +47,9 @@
     },
     "mx.ferreyra.callnumber": {
       "PACKAGE_NAME": "io.pagas.whatsapp"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "io.pagas.whatsapp"
     }
   },
   "dependent_plugins": {}

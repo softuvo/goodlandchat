@@ -27,6 +27,8 @@
 
 #import <Cordova/CDVViewController.h>
 #import <Cordova/CDVAppDelegate.h>
+#import  <Messages/Messages.h>
+
 
 @interface AppDelegate : CDVAppDelegate {}
 
